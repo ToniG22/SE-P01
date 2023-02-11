@@ -21,6 +21,9 @@ class Program
         Console.WriteLine("");
         Console.WriteLine("Ex. 6:");
         gcd();
+        Console.WriteLine("");
+        Console.WriteLine("Ex. 7:");
+        readFile();
     }
 
     static void fibonacci() {
@@ -118,6 +121,27 @@ class Program
         }
 
         Console.Write("GCD of " + n1 + " and " + n2 + " is " + gcd);
+    }
+
+    static void readFile() {
+        string fileName = "scribles.txt";
+
+        try
+        {
+            using (StreamReader sr = new StreamReader(fileName)) {
+                string line;
+                while ((line = sr.ReadLine()) != null){
+                    Console.Write(line.ToUpper());
+                }
+            }
+        }
+        catch (FileNotFoundException) {
+            Console.Write("The File {0} could not be found.", fileName);
+        }
+        catch(Exception e)
+        {
+            Console.Write("An error occurred " + e.Message);
+        }
     }
 
 }
